@@ -41,3 +41,11 @@ def join_categories(df):
   .replace('sinalizacao_e_seguranca', 'sinalizacao_e_seguranca_servicos')\
   .replace('seguros_e_servicos', 'sinalizacao_e_seguranca_servicos')
   return df
+
+def rename_columns(df):
+    dicionario = {}
+    for c in df.columns:
+        novo = c.replace('categorias_', ' ').strip()
+        dicionario[c] = novo
+    df.rename(dicionario, inplace=True, axis=1)
+    return df
